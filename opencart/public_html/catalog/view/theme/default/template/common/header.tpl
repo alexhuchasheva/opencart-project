@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-sm-4">
                         <p style="font-family: 'Pacifico', cursive; font-size: 20px;">8 (981) 858-62-60</p>
-                        <h1 style="font-family: 'Pacifico', cursive; font-size: 20px; margin-top: -5px;">Солнце в каждой капле!</h1>
+                        <h1 style="font-family: 'Pacifico', cursive; font-size: 16px; margin-top: 0px;">Уникальная продукция для красоты и здоровья</h1>
                     </div>
                     <div class="col-sm-3"><?php echo $search; ?>
                     </div>
