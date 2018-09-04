@@ -50,8 +50,11 @@
     <body class="<?php echo $class; ?>">
         <nav id="top">
             <div class="container-fluid">
-                <?php echo $currency; ?>
-                <?php echo $language; ?>
+                <div class="pull-left"> 
+                    <h1 style="font-size: 12px; margin-top: 10px; color: #888888; margin-left: 10px;">Интернет-магазин натуральной косметики для красоты и здоровья</h1> 
+                    <!-- <?php echo $currency; ?> 
+                    <?php echo $language; ?> --> 
+                </div> 
                 <div id="top-links" class="nav pull-right">
                     <ul class="list-inline">
                         <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
@@ -93,8 +96,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <p style="font-family: 'Pacifico', cursive; font-size: 20px;">8 (981) 858-62-60</p>
-                        <h1 style="font-family: 'Pacifico', cursive; font-size: 16px; margin-top: 0px;">Уникальная продукция для красоты и здоровья</h1>
+                        <p style="font-family: 'Pacifico', cursive; font-size: 20px; margin-top: 10px;">8 (981) 858-62-60</p>
                     </div>
                     <div class="col-sm-3"><?php echo $search; ?>
                     </div>
@@ -105,7 +107,6 @@
         <?php if ($categories) { ?>
         <div class="container-fluid" style="padding: 0;">
             <nav id="menu" class="navbar">
-                <div class="container">
                     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
                         <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
                     </div>
@@ -119,20 +120,27 @@
                                         <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
                                         <ul class="list-unstyled">
                                             <?php foreach ($children as $child) { ?>
-                                            <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                                            <?php } ?>
-                                        </ul>
-                                        <?php } ?>
-                                    </div>
-                                    <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+                                            <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+                                                <?php     if ($child['children']) {?>
+                      <div class="child"><ul class="list-unstyled">
+                      <?php foreach ($child['children'] as $child) { ?>
+                         <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                     <?php } ?>
+                                        </ul></div>
+                                    <?php } ?>
                             </li>
-                            <?php } else { ?>
-                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                            <?php } ?>
                             <?php } ?>
                         </ul>
+                        <?php } ?>
                     </div>
-                </div>
-            </nav>
+                    <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+                </li>
+                <?php } else { ?>
+                <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php } ?>
+                <?php } ?>
+                </ul>
         </div>
-        <?php } ?>
+</nav>
+</div>
+<?php } ?>

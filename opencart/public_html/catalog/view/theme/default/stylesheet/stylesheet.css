@@ -201,7 +201,8 @@ div.required .control-label:before {
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     padding: 10px 15px 10px 15px;
-    min-height: 15px;
+    min-height: 42px;
+    font-size: 14px;
     background-color: transparent;
 }
 #menu .nav > li > a:hover, #menu .nav > li.open > a {
@@ -227,6 +228,7 @@ div.required .control-label:before {
 }
 #menu .dropdown-inner li a:hover {
     color: #FFFFFF;
+    background: #7e71b1;
 }
 #menu .see-all {
     display: block;

@@ -105,16 +105,27 @@ class ControllerCommonHeader extends Controller {
 				$children = $this->model_catalog_category->getCategories($category['category_id']);
 
 				foreach ($children as $child) {
-					$filter_data = array(
-						'filter_category_id'  => $child['category_id'],
-						'filter_sub_category' => true
-					);
+                 $children_data2 = array();  
+                 $children2 = $this->model_catalog_category->getCategories($child['category_id']);  
+           
+                 foreach ($children2 as $child2) {
+                     $children_data2[] = array(
+                     'name'  => $child2['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+                     'href'  => $this->url->link('product/category', 'path=' . $child['category_id'] . '_' . $child2['category_id']),
+                     );
+                 }
+               
+                 $filter_data = array(
+                     'filter_category_id'  => $child['category_id'],
+                     'filter_sub_category' => true
+                 );
 
-					$children_data[] = array(
-						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
-					);
-				}
+                 $children_data[] = array(
+                     'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+                     'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
+                     'children' => $children_data2,
+                 );
+             }
 
 				// Level 1
 				$data['categories'][] = array(
