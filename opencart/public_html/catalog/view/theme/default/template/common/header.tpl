@@ -122,7 +122,7 @@
                                             <?php foreach ($children as $child) { ?>
                                             <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
                                                 <?php     if ($child['children']) {?>
-                      <div class="child"><ul class="list-unstyled">
+                      <div class="child"><ul class="child-list-unstyled">
                       <?php foreach ($child['children'] as $child) { ?>
                          <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
                      <?php } ?>
